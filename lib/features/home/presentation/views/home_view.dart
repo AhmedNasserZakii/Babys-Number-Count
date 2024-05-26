@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numbers_count/core/utils/scafold_background_gradiant.dart';
 import 'package:numbers_count/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,6 +7,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: HomeViewBody());
+    return Scaffold(
+      body: Container(
+        decoration: scaffoldBackGroundGradiant(),
+        child: const HomeViewBody(),
+      ),
+    );
   }
 }

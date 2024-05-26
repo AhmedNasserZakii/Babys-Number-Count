@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:numbers_count/constant.dart';
 import 'package:numbers_count/core/utils/assets.dart';
 import 'package:numbers_count/features/home/presentation/views/home_view.dart';
 import 'package:rive/rive.dart';
+
+import '../../../../../core/widgets/custom_elevated_button.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -14,6 +19,8 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   Artboard? riveArtboard;
   late RiveAnimationController controllerStart;
+
+  bool showButton = false;
   @override
   void initState() {
     super.initState();
@@ -31,26 +38,36 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     Future.delayed(
       const Duration(seconds: 5),
       () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const HomeView(),
-        ));
+        setState(() {
+          showButton = true;
+        });
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height / 2,
-        width: double.infinity,
-        child: riveArtboard == null
-            ? const SizedBox.shrink()
-            : Rive(
-                artboard: riveArtboard!,
-                fit: BoxFit.cover,
-              ),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 2,
+          width: double.infinity,
+          child: riveArtboard == null
+              ? const SizedBox.shrink()
+              : Rive(
+                  artboard: riveArtboard!,
+                  fit: BoxFit.cover,
+                ),
+        ),
+        showButton
+            ? CustomElevatedButton(
+                onTap: () {
+                  Get.to(() => const HomeView(), transition: Transition.fadeIn);
+                },
+              )
+            : const SizedBox.shrink(),
+      ],
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constant.dart';
 
-BoxDecoration containerGradiant() {
+BoxDecoration scaffoldBackGroundGradiant() {
   return const BoxDecoration(
     gradient: LinearGradient(
       colors: [

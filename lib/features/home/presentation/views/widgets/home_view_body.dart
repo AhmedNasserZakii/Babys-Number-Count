@@ -43,7 +43,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
-      //width: 100,
+      width: double.infinity,
       // child: riveArtboard == null
       //     ? const SizedBox.shrink()
       //     : Rive(
