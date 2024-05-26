@@ -7,8 +7,10 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     required this.onTap,
+    required this.title,
   });
   final void Function() onTap;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +26,7 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          'Let\' Count',
+          title,
           style: TextStyle(
             color: kDarkBlue,
             fontSize: 24.sp,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
-import 'package:numbers_count/constant.dart';
+
 import 'package:numbers_count/core/utils/assets.dart';
 import 'package:numbers_count/features/home/presentation/views/home_view.dart';
 import 'package:rive/rive.dart';
@@ -62,6 +62,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         ),
         showButton
             ? CustomElevatedButton(
+                title: 'Let\' Count',
                 onTap: () {
                   Get.to(() => const HomeView(), transition: Transition.fadeIn);
                 },
