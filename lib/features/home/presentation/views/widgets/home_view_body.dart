@@ -295,6 +295,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 addNineToTenController();
                 playSound(counter);
                 counter++;
+                counter = 1;
               } else {
                 counter = 1;
               }
