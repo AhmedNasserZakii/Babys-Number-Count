@@ -1,5 +1,7 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:numbers_count/constant.dart';
 import 'package:numbers_count/core/utils/assets.dart';
 import 'package:numbers_count/core/utils/number_animation_enum.dart';
 import 'package:numbers_count/core/widgets/custom_elevated_button.dart';
@@ -13,6 +15,8 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
+  final AudioPlayer audioPlayer = AudioPlayer();
+
   Artboard? riveArtboard;
   late RiveAnimationController controllerOneIdle;
   late RiveAnimationController controllerOneToTwo;
@@ -130,25 +134,116 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     debugPrint('Nine To Ten');
   }
 
-  int counter = 2;
+  void playSound(int num) {
+    final String soundPath = 'sounds/$num.mp3';
+
+    audioPlayer.play(AssetSource(soundPath));
+  }
+
+  void updateControllerAndPlayAudio(int counter, bool isPlus) {
+    if (counter == 1) {
+      addOneIdelController();
+      playSound(counter);
+      counter++;
+    } else if (counter == 2) {
+      addOneToTwoController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 3) {
+      addTwoToThreeController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 4) {
+      addThreeToFourController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 5) {
+      addFourToFiveController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 6) {
+      addFiveToSixController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 7) {
+      addSixToSevenController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 8) {
+      addSevenToEightController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 9) {
+      addEightToNineController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else if (counter == 10) {
+      addNineToTenController();
+      playSound(counter);
+      isPlus ? counter++ : counter--;
+    } else {
+      counter = 1;
+    }
+  }
+
+  int counter = 1;
   @override
   Widget build(BuildContext context) {
-    final List<VoidCallback> controllers = [
-      addOneIdelController,
-      addOneToTwoController,
-      addTwoToThreeController,
-      addThreeToFourController,
-      addFourToFiveController,
-      addFiveToSixController,
-      addSixToSevenController,
-      addSevenToEightController,
-      addEightToNineController,
-      addNineToTenController,
-    ];
+    // final List<VoidCallback> controllers = [
+    //   addOneIdelController,
+    //   addOneToTwoController,
+    //   addTwoToThreeController,
+    //   addThreeToFourController,
+    //   addFourToFiveController,
+    //   addFiveToSixController,
+    //   addSixToSevenController,
+    //   addSevenToEightController,
+    //   addEightToNineController,
+    //   addNineToTenController,
+    // ];
+
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
+        // Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 16),
+        //   child: Row(
+        //     children: [
+        //       Expanded(
+        //         child: IconButton(
+        //           onPressed: () {
+        //             setState(() {
+        //               counter--;
+        //               updateControllerAndPlayAudio(counter, false);
+        //             });
+        //           },
+        //           icon: const Icon(
+        //             Icons.keyboard_backspace,
+        //             size: 40,
+        //             color: kDarkBlue,
+        //           ),
+        //         ),
+        //       ),
+        //       const Spacer(),
+        //       Expanded(
+        //         child: IconButton(
+        //           onPressed: () {
+        //             setState(() {
+        //               counter--;
+        //             });
+        //           },
+        //           icon: const Icon(
+        //             Icons.repeat_one,
+        //             size: 40,
+        //             color: kDarkBlue,
+        //           ),
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // ),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 1.2,
+          height: MediaQuery.of(context).size.height / 1.3,
           width: double.infinity,
           child: riveArtboard == null
               ? const SizedBox.shrink()
@@ -162,37 +257,46 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             setState(() {
               if (counter == 1) {
                 addOneIdelController();
+                playSound(counter);
                 counter++;
               } else if (counter == 2) {
                 addOneToTwoController();
+                playSound(counter);
                 counter++;
               } else if (counter == 3) {
                 addTwoToThreeController();
+                playSound(counter);
                 counter++;
               } else if (counter == 4) {
                 addThreeToFourController();
+                playSound(counter);
                 counter++;
               } else if (counter == 5) {
                 addFourToFiveController();
+                playSound(counter);
                 counter++;
               } else if (counter == 6) {
                 addFiveToSixController();
+                playSound(counter);
                 counter++;
               } else if (counter == 7) {
                 addSixToSevenController();
+                playSound(counter);
                 counter++;
               } else if (counter == 8) {
                 addSevenToEightController();
-
+                playSound(counter);
                 counter++;
               } else if (counter == 9) {
                 addEightToNineController();
+                playSound(counter);
                 counter++;
               } else if (counter == 10) {
                 addNineToTenController();
+                playSound(counter);
                 counter++;
               } else {
-                counter = 2;
+                counter = 1;
               }
             });
           },

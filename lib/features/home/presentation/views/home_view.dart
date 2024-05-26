@@ -9,7 +9,14 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: scaffoldBackGroundGradiant(),
+        decoration: scaffoldBackGroundGradiant().copyWith(
+          image: const DecorationImage(
+            image: AssetImage(
+              'assets/images/background.jpg',
+            ),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: const HomeViewBody(),
       ),
     );
