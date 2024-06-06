@@ -31,7 +31,8 @@ The Baby's Number Count app is created to provide an engaging and educational wa
 ## Technologies Used
 
 - **Flutter**: The core framework for developing the app.
-- **Animations**: Various animations for an engaging user experience.
+- **Rive**: Used for creating and integrating animations.
+- **GetX**: Used for state management and navigation.
 - **Child-friendly Design**: Ensuring the app is suitable for young children.
 
 ## Installation
